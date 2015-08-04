@@ -28,11 +28,11 @@ class ClassParser
                 'argumentsDescription' => $this->retriveParamsDescription($docblock->getTagsByName('param')),
                 'returnValue' => $this->retriveReturnValue($docblock->getTagsByName('return')),
                 'visibility' =>  join(
-                    ' ',
+                    '',
                     [
-                        $method->isFinal() ? 'final' : '',
+                        $method->isFinal() ? 'final ' : '',
                         'public',
-                        $method->isStatic() ? 'static' : '',
+                        $method->isStatic() ? ' static' : '',
                     ]
                 ),
             ];

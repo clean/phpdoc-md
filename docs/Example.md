@@ -11,7 +11,7 @@
 ### Example::__construct  
 
 ```php
- public  __construct (array $options)
+public __construct (array $options)
 ```
 
 **Description**
@@ -38,7 +38,7 @@ Constructs an object
 ### Example::addValues  
 
 ```php
- public  addValues (float $one, float $two)
+public addValues (float $one, float $two)
 ```
 
 **Description**

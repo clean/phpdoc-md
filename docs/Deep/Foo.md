@@ -9,7 +9,7 @@
 ### Foo::__construct  
 
 ```php
- public  __construct (array $options)
+public __construct (array $options)
 ```
 
 **Description**
