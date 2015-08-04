@@ -30,7 +30,9 @@
 <?php foreach ($info->argumentsDescription as $param) : ?>
 `(<?= join('|', $param->type) ?>) <?= $param->name ?>`  
 
+<?php if ($param->desc) : ?>
 > <?= str_replace("\n", "  \n", $param->desc) ?>  
+<?php endif ?>
 
 <?php endforeach ?>
 <?php endif ?>
