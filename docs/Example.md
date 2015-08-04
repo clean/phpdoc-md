@@ -22,10 +22,8 @@ Constructs an object
 
 **Parameters**
 
-`(array) $options`  
-
-> options  
-
+`(array) $options`
+: options  
 
 **Return Values**
 
@@ -49,14 +47,10 @@ Adds two arguments
 
 **Parameters**
 
-`(float) $one`  
-
-> First argument  
-
-`(float) $two`  
-
-> Second argument  
-
+`(float) $one`
+: First argument  
+`(float) $two`
+: Second argument  
 
 **Return Values**
 

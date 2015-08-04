@@ -20,10 +20,8 @@ Constructs an object
 
 **Parameters**
 
-`(array) $options`  
-
-> options  
-
+`(array) $options`
+: options  
 
 **Return Values**
 
