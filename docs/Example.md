@@ -31,7 +31,6 @@ Constructs an object
 
 `void`
 
->   
 
 
 
@@ -63,7 +62,6 @@ Adds two arguments
 
 `float`
 
->   
 
 
 
@@ -88,7 +86,6 @@ written in more then one line
 
 `integer`
 
->   
 
 
 
