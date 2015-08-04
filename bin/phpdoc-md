@@ -3,7 +3,7 @@
 
 use ReflectionClass;
 
-require __DIR__ . '/../vendor/autoload.php';
+require 'vendor/autoload.php';
 $config = require '.phpdoc-md';
 
 function getDestinationDirectory(ReflectionClass $reflection, $rootNamespace, $rootDir)
