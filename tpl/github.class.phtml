@@ -24,12 +24,16 @@
 
 **Parameters**
 
+<?php if (!$info->argumentsDescription) : ?>
+`This function has no parameters.`
+<?php else : ?>
 <?php foreach ($info->argumentsDescription as $param) : ?>
 `(<?= join('|', $param->type) ?>) <?= $param->name ?>`  
 
 > <?= str_replace("\n", "  \n", $param->desc) ?>  
 
 <?php endforeach ?>
+<?php endif ?>
 
 **Return Values**
 

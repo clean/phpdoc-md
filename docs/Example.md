@@ -81,6 +81,7 @@ written in more then one line
 
 **Parameters**
 
+`This function has no parameters.`
 
 **Return Values**
 
