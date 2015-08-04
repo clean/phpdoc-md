@@ -1,0 +1,18 @@
+language: php
+php:
+  - 5.5
+  - 5.6
+  - hhvm
+
+install:
+  - composer self-update
+  - composer install -n
+
+before_script:
+  - mkdir -p build/logs
+
+script:
+  - ./vendor/bin/phpunit --coverage-clover ./build/logs/clover.xml
+
+after_script:
+  - if [[ "`php --version`" != *HipHop* ]] ; then php vendor/bin/ocular code-coverage:upload --format=php-clover ./build/logs/clover.xml ; fi

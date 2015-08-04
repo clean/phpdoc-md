@@ -1,0 +1,71 @@
+#!/usr/bin/env php
+<?php namespace Clean\PhpDocMd;
+
+use ReflectionClass;
+
+require __DIR__ . '/../vendor/autoload.php';
+$config = require '.phpdoc-md';
+
+function getDestinationDirectory(ReflectionClass $reflection, $rootNamespace, $rootDir)
+{
+    return namespaceToPath(
+        rtrim(
+            sprintf(
+                '%s/%s',
+                $rootDir,
+                removeRootNamespace($reflection->getNamespaceName(), $rootNamespace)
+            ),
+            '/'
+        )
+    );
+}
+
+function namespaceToPath($namespace)
+{
+    return str_replace(
+        '\\',
+        '/',
+        $namespace
+    );
+}
+
+function removeRootNamespace($namespace, $root)
+{
+    return preg_replace(
+        sprintf("/^%s/", addslashes($root)),
+        '',
+        $namespace
+    );
+}
+
+switch ($config->format) {
+    default:
+        $readme = new Markdown\GitHub\Readme($config->rootNamespace);
+}
+
+foreach ($config->classes as $class) {
+    $reflection = new ReflectionClass($class);
+    $destDir = getDestinationDirectory($reflection, $config->rootNamespace, $config->destDirectory);
+    $destFile = sprintf('%s.md', $reflection->getShortName());
+    switch ($config->format) {
+        default:
+            $markDown = new Markdown\GitHub\ClassInfo($reflection);
+    }
+
+    file_exists($destDir) ?: mkdir($destDir, 0777, true);
+    file_put_contents($destDir . '/' . $destFile, $markDown);
+    $readme->addLink(
+        $reflection->getName(),
+        ltrim(
+            namespaceToPath(
+                removeRootNamespace(
+                    $reflection->getName(),
+                    $config->rootNamespace
+                )
+            ) . '.md',
+            '/'
+        )
+    );
+}
+
+file_put_contents($config->destDirectory . '/README.md', $readme);

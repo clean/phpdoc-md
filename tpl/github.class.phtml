@@ -1,0 +1,44 @@
+# <?= $this->className ?>
+
+## Methods
+
+| Name | Description |
+|------|-------------|
+<?php foreach ($this->methods as $name => $info) : ?>
+|[<?= $name ?>](#<?= strtolower($this->classShortName.$name) ?>)|<?= $info->shortDescription ?>|
+<?php endforeach ?>
+
+<?php foreach ($this->methods as $name => $info) : ?>
+
+### <?= $this->classShortName ?>::<?= $name ?>  
+
+```php
+<?= $info->visibility ?> <?= $name ?> (<?= join(', ', $info->argumentsList) ?: 'void' ?>)
+```
+
+**Description**
+
+<?= $info->shortDescription ?> 
+
+<?= str_replace("\n", "  \n", $info->longDescription) ?> 
+
+**Parameters**
+
+<?php foreach ($info->argumentsDescription as $param) : ?>
+`(<?= join('|', $param->type) ?>) <?= $param->name ?>`  
+
+> <?= str_replace("\n", "  \n", $param->desc) ?>  
+
+<?php endforeach ?>
+
+**Return Values**
+
+<?php foreach ($info->returnValue as $param) : ?>
+`<?= join('|', $param->type) ?>`
+
+> <?= str_replace("\n", "  \n", $param->desc) ?>  
+
+<?php endforeach ?>
+
+
+<?php endforeach ?>
