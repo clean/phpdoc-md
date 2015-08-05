@@ -16,6 +16,15 @@ class ClassParser
         $this->reflection = $class;
     }
 
+    public function getClassDescription()
+    {
+        $docblock = new DocBlock($this->reflection);
+        return (object)[
+            'short' => (string)$docblock->getShortDescription(),
+            'long' => (string)$docblock->getLongDescription(),
+        ];
+    }
+
     public function getMethodsDetails()
     {
         $methods = [];
