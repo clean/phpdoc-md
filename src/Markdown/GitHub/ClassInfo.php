@@ -22,6 +22,7 @@ class ClassInfo extends Phtml
                 'className' => $this->reflectionClass->getName(),
                 'classShortName' => $this->reflectionClass->getShortName(),
                 'methods' => $parser->getMethodsDetails(),
+                'classDescription' => $parser->getClassDescription(),
             ]
         );
         return parent::render();

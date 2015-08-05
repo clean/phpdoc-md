@@ -1,4 +1,7 @@
-# Clean\PhpDocMd\Tests\Deep\Foo
+# Clean\PhpDocMd\Tests\Deep\Foo  
+
+This is a Foo class
+
 ## Methods
 
 | Name | Description |

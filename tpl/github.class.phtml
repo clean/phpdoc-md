@@ -1,4 +1,11 @@
-# <?= $this->className ?>
+# <?= $this->className ?>  
+
+<?= $this->classDescription->short ?>
+
+<?php if ($this->classDescription->long) : ?>
+
+<?= $this->classDescription->long ?>  
+<?php endif ?>
 
 ## Methods
 
