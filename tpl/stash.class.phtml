@@ -1,0 +1,57 @@
+# <?= $this->className ?>  
+
+<?= $this->classDescription->short ?>
+
+<?php if ($this->classDescription->long) : ?>
+
+<?= $this->classDescription->long ?>  
+<?php endif ?>
+
+## Methods
+
+| Name | Description |
+|------|-------------|
+<?php foreach ($this->methods as $name => $info) : ?>
+|[<?= $name ?>]|<?= $info->shortDescription ?>|
+<?php endforeach ?>
+
+<?php foreach ($this->methods as $name => $info) : ?>
+
+### <?= $this->classShortName ?>::<?= $name ?>  
+
+```php
+<?= $info->visibility ?> <?= $name ?> (<?= join(', ', $info->argumentsList) ?: 'void' ?>)
+```
+
+**Description**
+
+<?= $info->shortDescription ?> 
+
+<?= str_replace("\n", "  \n", $info->longDescription) ?> 
+
+**Parameters**
+
+<?php if (!$info->argumentsDescription) : ?>
+`This function has no parameters.`
+<?php else : ?>
+<?php foreach ($info->argumentsDescription as $param) : ?>
+`(<?= join('|', $param->type) ?>) <?= $param->name ?>`
+<?php if ($param->desc) : ?>
+: <?= str_replace("\n", "  \n", $param->desc) ?>  
+<?php endif ?>
+<?php endforeach ?>
+<?php endif ?>
+
+**Return Values**
+
+<?php foreach ($info->returnValue as $param) : ?>
+`<?= join('|', $param->type) ?>`
+
+<?php if ($param->desc) : ?>
+> <?= str_replace("\n", "  \n", $param->desc) ?>  
+<?php endif ?>
+
+<?php endforeach ?>
+
+
+<?php endforeach ?>

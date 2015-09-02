@@ -1,0 +1,6 @@
+# <?= $this->title ?>
+
+
+<?php foreach ($this->toc as $className => $md) : ?>
+* [<?= $className ?>](<?= $md ?>) 
+<?php endforeach ?>
