@@ -49,7 +49,8 @@ foreach ($config->classes as $class) {
     $destFile = sprintf('%s.md', $reflection->getShortName());
     switch ($config->format) {
         default:
-            $markDown = new Markdown\GitHub\ClassInfo($reflection);
+            $markDown = (new Markdown\GitHub\ClassInfo($reflection))
+                ->sortMethods($config->sortMethods);
     }
 
     file_exists($destDir) ?: mkdir($destDir, 0777, true);
