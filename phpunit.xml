@@ -2,9 +2,20 @@
     bootstrap="vendor/autoload.php"
     colors="true"
 >
+  <logging>
+    <log type="coverage-clover" target="build/logs/clover.xml"/>
+  </logging>
   <testsuites>
-    <testsuite name="main">
+    <testsuite name="all">
       <directory>tests</directory>
     </testsuite>
   </testsuites>
+  <filter>
+    <blacklist>
+      <directory>vendor</directory>
+    </blacklist>
+    <whitelist>
+      <directory>src</directory>
+    </whitelist>
+  </filter>
 </phpunit>

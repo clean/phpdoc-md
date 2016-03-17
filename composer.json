@@ -10,8 +10,8 @@
     },
     "require-dev": {
         "phpunit/phpunit": "4.2.*",
-        "scrutinizer/ocular": "dev-master",
-        "romannowicki/mpr": "dev-master"
+        "romannowicki/mpr": "dev-master",
+        "codeclimate/php-test-reporter": "dev-master"
     },
     "autoload": {
         "psr-4": {

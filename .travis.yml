@@ -2,17 +2,20 @@ language: php
 php:
   - 5.5
   - 5.6
-  - hhvm
+
+addons:
+  code_climate:
+    repo_token: c9e47022796dcebc88c36be1f2497e167b12d93f3601619150ceaec39faf520f
 
 install:
-  - composer self-update
-  - composer install -n
+  - composer install
 
 before_script:
   - mkdir -p build/logs
 
 script:
-  - ./vendor/bin/phpunit --coverage-clover ./build/logs/clover.xml
+  - ./vendor/bin/phpunit
 
 after_script:
-  - if [[ "`php --version`" != *HipHop* ]] ; then php vendor/bin/ocular code-coverage:upload --format=php-clover ./build/logs/clover.xml ; fi
+  - ./vendor/bin/test-reporter
+

@@ -1,5 +1,10 @@
 # clean/phpdoc-md
 
+[![Build Status](https://travis-ci.org/clean/phpdoc-md.svg?branch=master)](https://travis-ci.org/clean/phpdoc-md)
+[![Code Climate](https://codeclimate.com/github/clean/phpdoc-md/badges/gpa.svg)](https://codeclimate.com/github/clean/phpdoc-md)
+[![Test Coverage](https://codeclimate.com/github/clean/phpdoc-md/badges/coverage.svg)](https://codeclimate.com/github/clean/phpdoc-md/coverage)
+[![Issue Count](https://codeclimate.com/github/clean/phpdoc-md/badges/issue_count.svg)](https://codeclimate.com/github/clean/phpdoc-md)
+
 phpdoc-md is a tool to generate nicly looking documentation from PHPDOC comments.
 The intention of this tool is little bit different then standard PHPDocumentator.
 It focus on class instances and generates documentation from public methods only.
