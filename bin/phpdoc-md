@@ -48,9 +48,17 @@ foreach ($config->classes as $class) {
     $destDir = getDestinationDirectory($reflection, $config->rootNamespace, $config->destDirectory);
     $destFile = sprintf('%s.md', $reflection->getShortName());
     switch ($config->format) {
-        default:
+        case 'stash':
+            $markDown = (new Markdown\Stash\ClassInfo($reflection))
+                ->sortMethods($config->sortMethods);
+            break;
+        case 'github':
             $markDown = (new Markdown\GitHub\ClassInfo($reflection))
                 ->sortMethods($config->sortMethods);
+            break;
+        default:
+            throw \RuntimeException('Not supported markdown format given: ' . $config->format);
+
     }
 
     file_exists($destDir) ?: mkdir($destDir, 0777, true);
