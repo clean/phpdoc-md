@@ -1,30 +1,11 @@
 <?php namespace Clean\PhpDocMd\Markdown\Stash;
 
-use Clean\View\Phtml;
-use Clean\PhpDocMd\ClassParser;
-use ReflectionClass;
+use Clean\PhpDocMd\Markdown\ClassInfo as AbstractClassInfo;
 
-class ClassInfo extends Phtml
+class ClassInfo extends AbstractClassInfo
 {
-    private $reflectionClass;
-
-    public function __construct(ReflectionClass $class)
+    public function getFormatName()
     {
-        $this->setTemplate(__DIR__.'/../../../tpl/stash.class.phtml');
-        $this->reflectionClass = $class;
-    }
-
-    public function render()
-    {
-        $parser = new ClassParser($this->reflectionClass);
-        $this->setData(
-            [
-                'className' => $this->reflectionClass->getName(),
-                'classShortName' => $this->reflectionClass->getShortName(),
-                'methods' => $parser->getMethodsDetails(),
-                'classDescription' => $parser->getClassDescription(),
-            ]
-        );
-        return parent::render();
+        return 'stash';
     }
 }
