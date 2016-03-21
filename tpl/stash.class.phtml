@@ -10,9 +10,9 @@
 ## Methods
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 <?php foreach ($this->methods as $name => $info) : ?>
-|<?= $name ?>|<?= $info->shortDescription ?>|
+| <?= preg_replace('/^_/', '\_', $name) ?> | <?= preg_replace('/^_/', '\_', $info->shortDescription) ?> |
 <?php endforeach ?>
 
 <?php foreach ($this->methods as $name => $info) : ?>
