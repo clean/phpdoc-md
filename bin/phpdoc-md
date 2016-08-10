@@ -50,11 +50,11 @@ foreach ($config->classes as $class) {
     switch ($config->format) {
         case 'stash':
             $markDown = (new Markdown\Stash\ClassInfo($reflection))
-                ->sortMethods($config->sortMethods);
+                ;
             break;
         case 'github':
             $markDown = (new Markdown\GitHub\ClassInfo($reflection))
-                ->sortMethods($config->sortMethods);
+                ;
             break;
         default:
             throw new \RuntimeException('Not supported markdown format given: ' . $config->format);

@@ -24,7 +24,6 @@ return (object)[
     'rootNamespace' => 'Clean\PhpDocMd\Tests',
     'destDirectory' => 'docs',
     'format' => 'github',
-    'sortMethods' => true,
     'classes' => [
         '\Clean\PhpDocMd\Tests\Example',
         '\Clean\PhpDocMd\Tests\Deep\Foo',

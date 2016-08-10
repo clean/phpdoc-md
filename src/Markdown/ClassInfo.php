@@ -7,7 +7,6 @@ use ReflectionClass;
 abstract class ClassInfo extends Phtml
 {
     protected $reflectionClass;
-    protected $sortMethods = false;
 
     /**
      * __construct 
@@ -23,20 +22,6 @@ abstract class ClassInfo extends Phtml
     abstract public function getFormatName();
 
     /**
-     * When set to true methods will be sorted in markdown output
-     * 
-     * @param bool $value 
-     * 
-     * @return self
-     */
-    public function sortMethods($value)
-    {
-        assert(is_bool($value), 'Non bool parameter given for ' . __FUNCTION__);
-        $this->sortMethods = $value;
-        return $this;
-    }
-
-    /**
      * Renders markdown for class
      * 
      * @return string
@@ -45,10 +30,7 @@ abstract class ClassInfo extends Phtml
     {
         $parser = new ClassParser($this->reflectionClass);
         $methods = $parser->getMethodsDetails();
-
-        if ($this->sortMethods) {
-            ksort($methods);
-        }
+        ksort($methods);
 
         $this->setData(
             [
