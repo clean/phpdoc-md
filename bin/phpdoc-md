@@ -57,7 +57,7 @@ foreach ($config->classes as $class) {
                 ->sortMethods($config->sortMethods);
             break;
         default:
-            throw \RuntimeException('Not supported markdown format given: ' . $config->format);
+            throw new \RuntimeException('Not supported markdown format given: ' . $config->format);
 
     }
 
