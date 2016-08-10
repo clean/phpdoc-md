@@ -25,8 +25,8 @@ return (object)[
     'destDirectory' => 'docs',
     'format' => 'github',
     'classes' => [
-        '\Clean\PhpDocMd\Tests\Example',
-        '\Clean\PhpDocMd\Tests\Deep\Foo',
+        '\Clean\PhpDocMd\Tests\Example' => [],
+        '\Clean\PhpDocMd\Tests\Deep\Foo' => [],
     ],
 ];
 ```

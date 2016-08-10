@@ -43,7 +43,7 @@ switch ($config->format) {
         $readme = new Markdown\GitHub\Readme($config->rootNamespace);
 }
 
-foreach ($config->classes as $class) {
+foreach ($config->classes as $class => $classConfig) {
     $reflection = new ReflectionClass($class);
     $destDir = getDestinationDirectory($reflection, $config->rootNamespace, $config->destDirectory);
     $destFile = sprintf('%s.md', $reflection->getShortName());
