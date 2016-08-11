@@ -11,11 +11,11 @@ This is a Foo class
 
 ### Foo::__construct  
 
+**Description**
+
 ```php
 public __construct (array $options)
 ```
-
-**Description**
 
 Constructs an object 
 
@@ -23,7 +23,7 @@ Constructs an object
 
 **Parameters**
 
-`(array) $options`
+* `(array) $options`
 : options  
 
 **Return Values**

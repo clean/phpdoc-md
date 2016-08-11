@@ -17,11 +17,11 @@ various PHPDoc tags are used.
 
 ### Example::__construct  
 
+**Description**
+
 ```php
 public __construct (array $options)
 ```
-
-**Description**
 
 Constructs an object 
 
@@ -29,7 +29,7 @@ Constructs an object
 
 **Parameters**
 
-`(array) $options`
+* `(array) $options`
 : options  
 
 **Return Values**
@@ -42,11 +42,11 @@ Constructs an object
 
 ### Example::addValues  
 
+**Description**
+
 ```php
 public addValues (float $one, float $two)
 ```
-
-**Description**
 
 Adds two arguments 
 
@@ -54,9 +54,9 @@ Adds two arguments
 
 **Parameters**
 
-`(float) $one`
+* `(float) $one`
 : First argument  
-`(float) $two`
+* `(float) $two`
 : Second argument  
 
 **Return Values**
@@ -69,11 +69,11 @@ Adds two arguments
 
 ### Example::one  
 
+**Description**
+
 ```php
 final public static one (void)
 ```
-
-**Description**
 
 Returns one 
 
