@@ -1,6 +1,6 @@
 <?php namespace Clean\PhpDocMd\Example;
 
-class ExtendSomeClass2 extends ExtendSomeClass
+class ExtendExtendClass extends ExtendClass
 {
 	/**
 	* A summary informing the user what the associated element does.

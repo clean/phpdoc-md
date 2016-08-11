@@ -1,6 +1,6 @@
 <?php namespace Clean\PhpDocMd\Example;
 
-class ExtendSomeClass extends \ArrayIterator
+class ExtendClass extends \ArrayIterator
 {
 	/**
 	* A summary informing the user what the associated element does.

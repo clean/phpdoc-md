@@ -1,4 +1,4 @@
-# Clean\PhpDocMd\Example\ExtendSomeClass2  
+# Clean\PhpDocMd\Example\ExtendExtendClass  
 
 
 
@@ -6,10 +6,10 @@
 
 | Name | Description |
 |------|-------------|
-|[public2Method](#extendsomeclass2public2method)|A summary informing the user what the associated element does.|
+|[public2Method](#extendextendclasspublic2method)|A summary informing the user what the associated element does.|
 
 
-### ExtendSomeClass2::public2Method  
+### ExtendExtendClass::public2Method  
 
 **Description**
 

@@ -25,15 +25,14 @@ return (object)[
     'destDirectory' => 'docs',
     'format' => 'github',
     'classes' => [
-        '\Clean\PhpDocMd\Example\Example' => [],
+        '\Clean\PhpDocMd\Example\Basic' => [],
         '\Clean\PhpDocMd\Example\Deep\Foo' => [],
-        '\Clean\PhpDocMd\Example\ExtendArrayIterator' => [
             'excludeParentMethods' => false,
         ],
-        '\Clean\PhpDocMd\Example\ExtendSomeClass' => [
+        '\Clean\PhpDocMd\Example\ExtendClass' => [
             'excludeParentMethods' => true,
         ],
-        '\Clean\PhpDocMd\Example\ExtendSomeClass2' => [
+        '\Clean\PhpDocMd\Example\ExtendExtendClass' => [
             'excludeParentMethods' => true,
         ],
     ],

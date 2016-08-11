@@ -6,10 +6,10 @@ return (object)[
     'classes' => [
         '\Clean\PhpDocMd\Example\BasicClass' => [],
         '\Clean\PhpDocMd\Example\Deep\Foo' => [],
-        '\Clean\PhpDocMd\Example\ExtendSomeClass' => [
+        '\Clean\PhpDocMd\Example\ExtendClass' => [
             'excludeParentMethods' => true,
         ],
-        '\Clean\PhpDocMd\Example\ExtendSomeClass2' => [
+        '\Clean\PhpDocMd\Example\ExtendExtendClass' => [
             'excludeParentMethods' => true,
         ],
     ],
