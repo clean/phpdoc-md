@@ -19,11 +19,11 @@
 
 ### <?= $this->classShortName ?>::<?= $name ?>  
 
+**Description**
+
 ```php
 <?= $info->visibility ?> <?= $name ?> (<?= join(', ', $info->argumentsList) ?: 'void' ?>)
 ```
-
-**Description**
 
 <?= $info->shortDescription ?> 
 
@@ -35,7 +35,7 @@
 `This function has no parameters.`
 <?php else : ?>
 <?php foreach ($info->argumentsDescription as $param) : ?>
-`(<?= join('|', $param->type) ?>) <?= $param->name ?>`
+* `(<?= join('|', $param->type) ?>) <?= $param->name ?>`
 <?php if ($param->desc) : ?>
 : <?= str_replace("\n", "  \n", $param->desc) ?>  
 <?php endif ?>
