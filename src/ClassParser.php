@@ -11,24 +11,37 @@ class ClassParser
      */
     private $reflection;
 
-    public function __construct(ReflectionClass $class)
+    private $config;
+
+    public function __construct(ReflectionClass $class, $config = [])
     {
         $this->reflection = $class;
+        $this->config = $config;
     }
 
     public function getClassDescription()
     {
         $docblock = new DocBlock($this->reflection);
+        $parentClassName = ($p = $this->reflection->getParentClass()) ? $p->getName() : null;
         return (object)[
             'short' => (string)$docblock->getShortDescription(),
             'long' => (string)$docblock->getLongDescription(),
+            'extends' => $parentClassName,
+            'implements' => $this->reflection->getInterfaceNames(),
         ];
     }
 
     public function getMethodsDetails()
     {
         $methods = [];
+        $parentClassMethods = $this->getParentClassMethods();
+
         foreach ($this->reflection->getMethods(ReflectionMethod::IS_PUBLIC) as $method) {
+            if (isset($this->config['excludeParentMethods'])) {
+                if (isset($parentClassMethods[$method->getName()])) {
+                    continue;
+                }
+            }
             $docblock = new DocBlock($method);
             $data = [
                 'shortDescription' => $docblock->getShortDescription(),
@@ -49,6 +62,18 @@ class ClassParser
 
         }
 
+        return $methods;
+    }
+
+    private function getParentClassMethods()
+    {
+        $methods = [];
+        $parentClass = $this->reflection->getParentClass();
+        if ($parentClass) {
+            foreach ($parentClass->getMethods(ReflectionMethod::IS_PUBLIC) as $method) {
+                $methods[$method->getName()] = $method;
+            }
+        }
         return $methods;
     }
 

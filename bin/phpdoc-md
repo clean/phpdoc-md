@@ -49,12 +49,10 @@ foreach ($config->classes as $class => $classConfig) {
     $destFile = sprintf('%s.md', $reflection->getShortName());
     switch ($config->format) {
         case 'stash':
-            $markDown = (new Markdown\Stash\ClassInfo($reflection))
-                ;
+            $markDown = (new Markdown\Stash\ClassInfo($reflection, $classConfig));
             break;
         case 'github':
-            $markDown = (new Markdown\GitHub\ClassInfo($reflection))
-                ;
+            $markDown = (new Markdown\GitHub\ClassInfo($reflection, $classConfig));
             break;
         default:
             throw new \RuntimeException('Not supported markdown format given: ' . $config->format);
