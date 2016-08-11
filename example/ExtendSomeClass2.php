@@ -1,4 +1,4 @@
-<?php namespace Clean\PhpDocMd\Tests;
+<?php namespace Clean\PhpDocMd\Example;
 
 class ExtendSomeClass2 extends ExtendSomeClass
 {

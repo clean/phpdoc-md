@@ -20,11 +20,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Clean\\PhpDocMd\\Tests\\": "tests/"
+            "Clean\\PhpDocMd\\Example\\": "example/"
         }
-    },
-    "scripts": {
-        "test": "vendor/bin/phpunit"
     },
     "bin": [
       "bin/phpdoc-md"

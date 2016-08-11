@@ -38,13 +38,22 @@ function removeRootNamespace($namespace, $root)
     );
 }
 
+function error($message, $exception = null) {
+    echo sprintf("ERROR: '%s'", trim($message));
+    exit(1);
+}
+
 switch ($config->format) {
     default:
         $readme = new Markdown\GitHub\Readme($config->rootNamespace);
 }
 
 foreach ($config->classes as $class => $classConfig) {
-    $reflection = new ReflectionClass($class);
+    try {
+        $reflection = new ReflectionClass($class);
+    } catch(\ReflectionException $e) {
+        error('Config error: ' . $e->getMessage(), $e);
+    }
     $destDir = getDestinationDirectory($reflection, $config->rootNamespace, $config->destDirectory);
     $destFile = sprintf('%s.md', $reflection->getShortName());
     switch ($config->format) {

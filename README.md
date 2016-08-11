@@ -21,19 +21,19 @@ Example of `.phpdoc-md` file:
 ```
 <?php
 return (object)[
-    'rootNamespace' => 'Clean\PhpDocMd\Tests',
+    'rootNamespace' => 'Clean\PhpDocMd\Example',
     'destDirectory' => 'docs',
     'format' => 'github',
     'classes' => [
-        '\Clean\PhpDocMd\Tests\Example' => [],
-        '\Clean\PhpDocMd\Tests\Deep\Foo' => [],
-        '\Clean\PhpDocMd\Tests\ExtendArrayIterator' => [
+        '\Clean\PhpDocMd\Example\Example' => [],
+        '\Clean\PhpDocMd\Example\Deep\Foo' => [],
+        '\Clean\PhpDocMd\Example\ExtendArrayIterator' => [
             'excludeParentMethods' => false,
         ],
-        '\Clean\PhpDocMd\Tests\ExtendSomeClass' => [
+        '\Clean\PhpDocMd\Example\ExtendSomeClass' => [
             'excludeParentMethods' => true,
         ],
-        '\Clean\PhpDocMd\Tests\ExtendSomeClass2' => [
+        '\Clean\PhpDocMd\Example\ExtendSomeClass2' => [
             'excludeParentMethods' => true,
         ],
     ],

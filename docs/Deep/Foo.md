@@ -1,4 +1,4 @@
-# Clean\PhpDocMd\Tests\Deep\Foo  
+# Clean\PhpDocMd\Example\Deep\Foo  
 
 This is a Foo class
 
@@ -27,9 +27,6 @@ Constructs an object
 : options  
 
 **Return Values**
-
-`void`
-
 
 
 

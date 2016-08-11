@@ -1,6 +1,6 @@
-# Clean\PhpDocMd\Tests
+# Clean\PhpDocMd\Example
 
-* [Clean\PhpDocMd\Tests\Example](Example.md) 
-* [Clean\PhpDocMd\Tests\Deep\Foo](Deep/Foo.md) 
-* [Clean\PhpDocMd\Tests\ExtendSomeClass](ExtendSomeClass.md) 
-* [Clean\PhpDocMd\Tests\ExtendSomeClass2](ExtendSomeClass2.md) 
+* [Clean\PhpDocMd\Example\BasicClass](BasicClass.md) 
+* [Clean\PhpDocMd\Example\Deep\Foo](Deep/Foo.md) 
+* [Clean\PhpDocMd\Example\ExtendSomeClass](ExtendSomeClass.md) 
+* [Clean\PhpDocMd\Example\ExtendSomeClass2](ExtendSomeClass2.md) 

@@ -1,4 +1,4 @@
-# Clean\PhpDocMd\Tests\ExtendSomeClass2  
+# Clean\PhpDocMd\Example\ExtendSomeClass2  
 
 
 

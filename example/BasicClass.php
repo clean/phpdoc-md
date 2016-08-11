@@ -1,4 +1,4 @@
-<?php namespace Clean\PhpDocMd\Tests;
+<?php namespace Clean\PhpDocMd\Example;
 
 /**
  * Example_Class is a sample class for demonstrating PHPDoc
@@ -7,7 +7,7 @@
  * exists to help provide people with an understanding as to how the
  * various PHPDoc tags are used.
  */
-class Example
+class BasicClass
 {
     /**
      * config
