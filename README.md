@@ -27,6 +27,15 @@ return (object)[
     'classes' => [
         '\Clean\PhpDocMd\Tests\Example' => [],
         '\Clean\PhpDocMd\Tests\Deep\Foo' => [],
+        '\Clean\PhpDocMd\Tests\ExtendArrayIterator' => [
+            'excludeParentMethods' => false,
+        ],
+        '\Clean\PhpDocMd\Tests\ExtendSomeClass' => [
+            'excludeParentMethods' => true,
+        ],
+        '\Clean\PhpDocMd\Tests\ExtendSomeClass2' => [
+            'excludeParentMethods' => true,
+        ],
     ],
 ];
 ```
