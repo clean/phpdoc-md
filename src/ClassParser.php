@@ -37,7 +37,7 @@ class ClassParser
         $parentClassMethods = $this->getParentClassMethods();
 
         foreach ($this->reflection->getMethods(ReflectionMethod::IS_PUBLIC) as $method) {
-            if (isset($this->config['excludeParentMethods'])) {
+            if (isset($this->config['excludeParentMethods']) && $this->config['excludeParentMethods'] === true) {
                 if (isset($parentClassMethods[$method->getName()])) {
                     continue;
                 }
