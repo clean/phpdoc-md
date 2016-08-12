@@ -26,16 +26,10 @@ return (object)[
     'destDirectory' => 'docs',
     'format' => 'github',
     'classes' => [
-        '\Clean\PhpDocMd\Example\Basic' => [],
-        '\Clean\PhpDocMd\Example\Deep\Foo' => [],
-            'excludeParentMethods' => false,
-        ],
-        '\Clean\PhpDocMd\Example\ExtendClass' => [
-            'excludeParentMethods' => true,
-        ],
-        '\Clean\PhpDocMd\Example\ExtendExtendClass' => [
-            'excludeParentMethods' => true,
-        ],
+        '\Clean\PhpDocMd\Example\Basic'
+        '\Clean\PhpDocMd\Example\Deep\Foo',
+        '\Clean\PhpDocMd\Example\ExtendClass',
+        '\Clean\PhpDocMd\Example\ExtendExtendClass',
     ],
 ];
 ```
