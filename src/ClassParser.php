@@ -31,17 +31,20 @@ class ClassParser
         ];
     }
 
-    public function getInterfaces()
+    private function getInterfaces()
     {
         $interfaces = [];
         foreach ($this->reflection->getInterfaceNames() as $interface) {
-          if (strpos($interface, '\\')) {
-            $interfaces[$interface] = null;
-          } else {
-            $interfaces[$interface] = sprintf("http://php.net/manual/en/class.%s.php)", strtolower($interface));
-          }
+            $interfaces[$interface] = $this->getClassDocHref($interface);
         }
         return $interfaces;
+    }
+
+    private function getClassDocHref($className)
+    {
+        if (false === strpos($className, '\\')) {
+            return sprintf("http://php.net/manual/en/class.%s.php)", strtolower($className));
+        }
     }
 
     public function getMethodsDetails()
