@@ -40,6 +40,8 @@ abstract class ClassInfo extends Phtml
                 'classShortName' => $this->reflectionClass->getShortName(),
                 'methods' => $methods,
                 'classDescription' => $parser->getClassDescription(),
+                'interfaces' => $parser->getInterfaces(),
+                'parentClass' => $parser->getParentClassName(),
             ]
         );
         return parent::render();

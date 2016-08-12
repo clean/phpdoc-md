@@ -22,29 +22,20 @@ class ClassParser
     public function getClassDescription()
     {
         $docblock = new DocBlock($this->reflection);
-        $parentClassName = ($p = $this->reflection->getParentClass()) ? $p->getName() : null;
         return (object)[
             'short' => (string)$docblock->getShortDescription(),
             'long' => (string)$docblock->getLongDescription(),
-            'parentClassName' => $parentClassName,
-            'interfaces' => $this->getInterfaces(),
         ];
     }
 
-    private function getInterfaces()
+    public function getParentClassName()
     {
-        $interfaces = [];
-        foreach ($this->reflection->getInterfaceNames() as $interface) {
-            $interfaces[$interface] = $this->getClassDocHref($interface);
-        }
-        return $interfaces;
+        return ($p = $this->reflection->getParentClass()) ? $p->getName() : null;
     }
 
-    private function getClassDocHref($className)
+    public function getInterfaces()
     {
-        if (false === strpos($className, '\\')) {
-            return sprintf("http://php.net/manual/en/class.%s.php)", strtolower($className));
-        }
+        return $this->reflection->getInterfaceNames();
     }
 
     public function getMethodsDetails()

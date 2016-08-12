@@ -7,22 +7,16 @@
 <?= $this->classDescription->long ?>  
 <?php endif ?>
 
-<?php if ($interfaces = $this->classDescription->interfaces): ?>
+<?php if ($interfaces = $this->interfaces): ?>
 ## Implements:
-<?php
-$i = [];
-foreach ($interfaces as $name => $link) {
-  $i[] = $link ? "[$name]($link)" : $name;
-}
-?>
-<?= join(', ', $i); ?>
+<?= join(', ', $interfaces); ?>
 <?php endif ?>
 
 
-<?php if ($this->classDescription->parentClassName): ?>
+<?php if ($this->parentClass): ?>
 ## Extend:
 
-<?= $this->classDescription->parentClassName ?>
+<?= $this->parentClass ?>
 <?php endif ?>
 
 ## Methods

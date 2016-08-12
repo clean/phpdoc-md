@@ -3,7 +3,6 @@
 
 
 ## Implements:
-
 Countable, Serializable, SeekableIterator, ArrayAccess, Traversable, Iterator
 
 ## Extend:
