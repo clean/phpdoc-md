@@ -27,8 +27,21 @@ class ClassParser
             'short' => (string)$docblock->getShortDescription(),
             'long' => (string)$docblock->getLongDescription(),
             'parentClassName' => $parentClassName,
-            'interfaces' => $this->reflection->getInterfaceNames(),
+            'interfaces' => $this->getInterfaces(),
         ];
+    }
+
+    public function getInterfaces()
+    {
+        $interfaces = [];
+        foreach ($this->reflection->getInterfaceNames() as $interface) {
+          if (strpos($interface, '\\')) {
+            $interfaces[$interface] = null;
+          } else {
+            $interfaces[$interface] = sprintf("http://php.net/manual/en/class.%s.php)", strtolower($interface));
+          }
+        }
+        return $interfaces;
     }
 
     public function getMethodsDetails()
