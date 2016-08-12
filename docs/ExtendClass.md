@@ -15,6 +15,35 @@ ArrayIterator
 |------|-------------|
 |[publicMethod](#extendclasspublicmethod)|A summary informing the user what the associated element does.|
 
+## Inherited methods
+
+| Name | Description |
+|------|-------------|
+|__construct|-|
+|append|-|
+|asort|-|
+|count|-|
+|current|-|
+|getArrayCopy|-|
+|getFlags|-|
+|key|-|
+|ksort|-|
+|natcasesort|-|
+|natsort|-|
+|next|-|
+|offsetExists|-|
+|offsetGet|-|
+|offsetSet|-|
+|offsetUnset|-|
+|rewind|-|
+|seek|-|
+|serialize|-|
+|setFlags|-|
+|uasort|-|
+|uksort|-|
+|unserialize|-|
+|valid|-|
+
 
 
 ### ExtendClass::publicMethod  

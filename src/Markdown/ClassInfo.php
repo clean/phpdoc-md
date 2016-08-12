@@ -7,18 +7,16 @@ use ReflectionClass;
 abstract class ClassInfo extends Phtml
 {
     protected $reflectionClass;
-    protected $config;
 
     /**
      * __construct 
      * 
      * @param ReflectionClass $class class 
      */
-    public function __construct(ReflectionClass $class, $config = [])
+    public function __construct(ReflectionClass $class)
     {
         $this->setTemplate(__DIR__.'/../../tpl/' . $this->getFormatName() . '.class.phtml');
         $this->reflectionClass = $class;
-        $this->config = $config;
     }
 
     abstract public function getFormatName();
@@ -30,7 +28,7 @@ abstract class ClassInfo extends Phtml
      */
     public function render()
     {
-        $parser = new ClassParser($this->reflectionClass, $this->config);
+        $parser = new ClassParser($this->reflectionClass);
         $methods = $parser->getMethodsDetails();
         ksort($methods);
 
@@ -42,6 +40,7 @@ abstract class ClassInfo extends Phtml
                 'classDescription' => $parser->getClassDescription(),
                 'interfaces' => $parser->getInterfaces(),
                 'parentClass' => $parser->getParentClassName(),
+                'inheritedMethods' => $parser->getInheritedMethods(),
             ]
         );
         return parent::render();

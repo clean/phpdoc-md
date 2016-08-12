@@ -28,6 +28,16 @@
 |[<?= $name ?>](#<?= strtolower($this->classShortName.$name) ?>)|<?= $info->shortDescription ?>|
 <?php endforeach ?>
 
+<?php if ($this->inheritedMethods): ?>
+## Inherited methods
+
+| Name | Description |
+|------|-------------|
+<?php foreach ($this->inheritedMethods as $name => $info) : ?>
+|<?= $name ?>|<?= $info->shortDescription ?: '-' ?>|
+<?php endforeach ?>
+<?php endif ?>
+
 
 <?php foreach ($this->methods as $name => $info) : ?>
 

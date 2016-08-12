@@ -49,7 +49,7 @@ switch ($config->format) {
         $readme = new Markdown\GitHub\Readme($config->rootNamespace);
 }
 
-foreach ($config->classes as $class => $classConfig) {
+foreach ($config->classes as $class) {
     try {
         $reflection = new ReflectionClass($class);
     } catch(\ReflectionException $e) {
@@ -59,10 +59,10 @@ foreach ($config->classes as $class => $classConfig) {
     $destFile = sprintf('%s.md', $reflection->getShortName());
     switch ($config->format) {
         case 'stash':
-            $markDown = (new Markdown\Stash\ClassInfo($reflection, $classConfig));
+            $markDown = new Markdown\Stash\ClassInfo($reflection);
             break;
         case 'github':
-            $markDown = (new Markdown\GitHub\ClassInfo($reflection, $classConfig));
+            $markDown = new Markdown\GitHub\ClassInfo($reflection);
             break;
         default:
             throw new \RuntimeException('Not supported markdown format given: ' . $config->format);

@@ -11,12 +11,9 @@ class ClassParser
      */
     private $reflection;
 
-    private $config;
-
-    public function __construct(ReflectionClass $class, $config = [])
+    public function __construct(ReflectionClass $class)
     {
         $this->reflection = $class;
-        $this->config = $config;
     }
 
     public function getClassDescription()
@@ -41,46 +38,49 @@ class ClassParser
     public function getMethodsDetails()
     {
         $methods = [];
-        $parentClassMethods = $this->getParentClassMethods();
+        $parentClassMethods = $this->getInheritedMethods();
 
         foreach ($this->reflection->getMethods(ReflectionMethod::IS_PUBLIC) as $method) {
-            if (isset($this->config['excludeParentMethods']) && $this->config['excludeParentMethods'] === true) {
-                if (isset($parentClassMethods[$method->getName()])) {
-                    continue;
-                }
+            if (isset($parentClassMethods[$method->getName()])) {
+                continue;
             }
-            $docblock = new DocBlock($method);
-            $data = [
-                'shortDescription' => $docblock->getShortDescription(),
-                'longDescription' => $docblock->getLongDescription(),
-                'argumentsList' => $this->retriveParams($docblock->getTagsByName('param')),
-                'argumentsDescription' => $this->retriveParamsDescription($docblock->getTagsByName('param')),
-                'returnValue' => $this->retriveReturnValue($docblock->getTagsByName('return')),
-                'visibility' =>  join(
-                    '',
-                    [
-                        $method->isFinal() ? 'final ' : '',
-                        'public',
-                        $method->isStatic() ? ' static' : '',
-                    ]
-                ),
-            ];
-            $methods[$method->getName()] = (object)$data;
-
+            $methods[$method->getName()] = $this->getMethodDetails($method);
         }
 
         return $methods;
     }
 
-    private function getParentClassMethods()
+    private function getMethodDetails($method)
+    {
+        $docblock = new DocBlock($method);
+        $data = [
+            'shortDescription' => $docblock->getShortDescription(),
+            'longDescription' => $docblock->getLongDescription(),
+            'argumentsList' => $this->retriveParams($docblock->getTagsByName('param')),
+            'argumentsDescription' => $this->retriveParamsDescription($docblock->getTagsByName('param')),
+            'returnValue' => $this->retriveReturnValue($docblock->getTagsByName('return')),
+            'visibility' =>  join(
+                '',
+                [
+                    $method->isFinal() ? 'final ' : '',
+                    'public',
+                    $method->isStatic() ? ' static' : '',
+                ]
+            ),
+        ];
+        return (object)$data;
+    }
+
+    public function getInheritedMethods()
     {
         $methods = [];
         $parentClass = $this->reflection->getParentClass();
         if ($parentClass) {
             foreach ($parentClass->getMethods(ReflectionMethod::IS_PUBLIC) as $method) {
-                $methods[$method->getName()] = $method;
+                $methods[$method->getName()] = $this->getMethodDetails($method);
             }
         }
+        ksort($methods);
         return $methods;
     }
 
