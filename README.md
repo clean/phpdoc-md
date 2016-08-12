@@ -4,9 +4,10 @@
 [![Code Climate](https://codeclimate.com/github/clean/phpdoc-md/badges/gpa.svg)](https://codeclimate.com/github/clean/phpdoc-md)
 [![Test Coverage](https://codeclimate.com/github/clean/phpdoc-md/badges/coverage.svg)](https://codeclimate.com/github/clean/phpdoc-md/coverage)
 [![Issue Count](https://codeclimate.com/github/clean/phpdoc-md/badges/issue_count.svg)](https://codeclimate.com/github/clean/phpdoc-md)
+[![Latest Stable Version](https://poser.pugx.org/clean/phpdoc-md/v/stable)](https://packagist.org/packages/clean/phpdoc-md)
+[![Total Downloads](https://poser.pugx.org/clean/phpdoc-md/downloads)](https://packagist.org/packages/clean/phpdoc-md)
+[![License](https://poser.pugx.org/clean/phpdoc-md/license)](https://packagist.org/packages/clean/phpdoc-md)
 
-composer: [clean/phpdoc-md](https://packagist.org/packages/clean/phpdoc-md)
-current version: [0.8.0](CHANGELOG.md)
 
 phpdoc-md is a tool to generate nicely looking documentation from PHPDOC comments.
 The intention of this tool is little bit different then standard PHPDocumentator.
