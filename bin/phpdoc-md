@@ -24,7 +24,7 @@ function namespaceToPath($namespace)
 {
     return str_replace(
         '\\',
-        '/',
+        DIRECTORY_SEPARATOR,
         $namespace
     );
 }
@@ -70,7 +70,7 @@ foreach ($config->classes as $class => $classConfig) {
     }
 
     file_exists($destDir) ?: mkdir($destDir, 0777, true);
-    file_put_contents($destDir . '/' . $destFile, $markDown);
+    file_put_contents($destDir . DIRECTORY_SEPARATOR . $destFile, $markDown);
     $readme->addLink(
         removeRootNamespace($reflection->getName(), $config->rootNamespace),
         namespaceToPath(
