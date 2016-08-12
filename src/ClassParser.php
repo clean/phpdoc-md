@@ -26,8 +26,8 @@ class ClassParser
         return (object)[
             'short' => (string)$docblock->getShortDescription(),
             'long' => (string)$docblock->getLongDescription(),
-            'extends' => $parentClassName,
-            'implements' => $this->reflection->getInterfaceNames(),
+            'parentClassName' => $parentClassName,
+            'interfaces' => $this->reflection->getInterfaceNames(),
         ];
     }
 

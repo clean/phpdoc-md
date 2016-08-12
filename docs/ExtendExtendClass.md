@@ -2,11 +2,20 @@
 
 
 
+## Implements:
+
+Iterator, Traversable, ArrayAccess, SeekableIterator, Serializable, Countable
+
+## Extend:
+
+Clean\PhpDocMd\Example\ExtendClass
+
 ## Methods
 
 | Name | Description |
 |------|-------------|
 |[public2Method](#extendextendclasspublic2method)|A summary informing the user what the associated element does.|
+
 
 
 ### ExtendExtendClass::public2Method  

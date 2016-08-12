@@ -7,6 +7,19 @@
 <?= $this->classDescription->long ?>  
 <?php endif ?>
 
+<?php if ($this->classDescription->interfaces): ?>
+## Implements:
+
+<?= join(', ', $this->classDescription->interfaces) ?>
+<?php endif ?>
+
+
+<?php if ($this->classDescription->parentClassName): ?>
+## Extend:
+
+<?= $this->classDescription->parentClassName ?>
+<?php endif ?>
+
 ## Methods
 
 | Name | Description |

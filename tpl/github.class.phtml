@@ -7,6 +7,20 @@
 <?= $this->classDescription->long ?>  
 <?php endif ?>
 
+<?php if ($this->classDescription->interfaces): ?>
+## Implements:
+
+<?= join(', ', $this->classDescription->interfaces) ?>
+<?php endif ?>
+
+
+<?php if ($this->classDescription->parentClassName): ?>
+## Extend:
+
+<?= $this->classDescription->parentClassName ?>
+<?php endif ?>
+
+
 ## Methods
 
 | Name | Description |
@@ -14,6 +28,7 @@
 <?php foreach ($this->methods as $name => $info) : ?>
 |[<?= $name ?>](#<?= strtolower($this->classShortName.$name) ?>)|<?= $info->shortDescription ?>|
 <?php endforeach ?>
+
 
 <?php foreach ($this->methods as $name => $info) : ?>
 

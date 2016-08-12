@@ -2,11 +2,20 @@
 
 
 
+## Implements:
+
+Countable, Serializable, SeekableIterator, ArrayAccess, Traversable, Iterator
+
+## Extend:
+
+ArrayIterator
+
 ## Methods
 
 | Name | Description |
 |------|-------------|
 |[publicMethod](#extendclasspublicmethod)|A summary informing the user what the associated element does.|
+
 
 
 ### ExtendClass::publicMethod  

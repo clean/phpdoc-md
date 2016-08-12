@@ -6,6 +6,10 @@ Example_Class is a class that has no real actual code, but merely
 exists to help provide people with an understanding as to how the
 various PHPDoc tags are used.  
 
+
+
+
+
 ## Methods
 
 | Name | Description |
@@ -13,6 +17,7 @@ various PHPDoc tags are used.
 |[__construct](#basicclass__construct)|Constructs an object|
 |[addValues](#basicclassaddvalues)|Adds two arguments|
 |[one](#basicclassone)|Returns one|
+
 
 
 ### BasicClass::__construct  
