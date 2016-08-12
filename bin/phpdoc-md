@@ -31,11 +31,12 @@ function namespaceToPath($namespace)
 
 function removeRootNamespace($namespace, $root)
 {
-    return preg_replace(
+    $re = preg_replace(
         sprintf("/^%s/", addslashes($root)),
         '',
         $namespace
     );
+    return ltrim($re, '\\');
 }
 
 function error($message, $exception = null) {
@@ -71,16 +72,13 @@ foreach ($config->classes as $class => $classConfig) {
     file_exists($destDir) ?: mkdir($destDir, 0777, true);
     file_put_contents($destDir . '/' . $destFile, $markDown);
     $readme->addLink(
-        $reflection->getName(),
-        ltrim(
-            namespaceToPath(
-                removeRootNamespace(
-                    $reflection->getName(),
-                    $config->rootNamespace
-                )
-            ) . '.md',
-            '/'
-        )
+        removeRootNamespace($reflection->getName(), $config->rootNamespace),
+        namespaceToPath(
+            removeRootNamespace(
+                $reflection->getName(),
+                $config->rootNamespace
+            )
+        ) . '.md'
     );
 }
 
