@@ -11,9 +11,9 @@
 
 phpdoc-md is a tool to generate nicely looking documentation from PHPDOC comments.
 The intention of this tool is little bit different then standard PHPDocumentator.
-It focus on class instances and generates documentation from public methods only.
+It focus on class instances and generates documentation from public methods at first place.
 Whenever class inherits from some other class the full interface from parent and child will be presented
-as part of it. 
+as part of it but inherited methods will be placed in separate section. 
 
 phpdoc-md is configured via single `.phpdoc-md` file located in project root directory.
 
