@@ -21,10 +21,10 @@
 
 ## Methods
 
-| Name | Description |
-| ---- | ----------- |
+| Name | Description | Link |
+| ---- | ----------- |------|
 <?php foreach ($this->methods as $name => $info) : ?>
-| <?= preg_replace('/^_/', '\_', $name) ?> | <?= preg_replace('/^_/', '\_', $info->shortDescription) ?> |
+| <a href="#<?= $this->classShortName ?>-<?= $name ?>"><?= preg_replace('/^_/', '\_', $name) ?></a> | <?= preg_replace('/^_/', '\_', $info->shortDescription) ?> |
 <?php endforeach ?>
 
 <?php if ($this->inheritedMethods): ?>
