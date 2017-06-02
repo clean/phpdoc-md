@@ -21,8 +21,8 @@
 
 ## Methods
 
-| Name | Description | Link |
-| ---- | ----------- |------|
+| Name | Description |
+| ---- | ----------- |
 <?php foreach ($this->methods as $name => $info) : ?>
 | <a href="#<?= $this->classShortName ?>-<?= $name ?>"><?= preg_replace('/^_/', '\_', $name) ?></a> | <?= preg_replace('/^_/', '\_', $info->shortDescription) ?> |
 <?php endforeach ?>
