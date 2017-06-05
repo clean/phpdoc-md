@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.11.0
+
+- feature: add links to methods for bitbucket server markdown
+
+## 0.10.0
+
+- bugfix: correct ivalid bitbucket syntax for method name that begins with `_` char
+
 ## 0.9.0
 
 - change the look of class markdown: add information about interfaces and extended class, inherited method moved to separate section
