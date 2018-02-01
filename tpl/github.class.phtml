@@ -68,14 +68,19 @@
 
 **Return Values**
 
+<?php if (!$info->returnValue) : ?>
+`void`
+<?php else : ?>
 <?php foreach ($info->returnValue as $param) : ?>
 `<?= join('|', $param->type) ?>`
 
 <?php if ($param->desc) : ?>
-> <?= str_replace("\n", "  \n", $param->desc) ?>  
+> <?= str_replace("\n", "  \n", $param->desc) ?>
 <?php endif ?>
 
 <?php endforeach ?>
+<?php endif ?>
 
+<hr />
 
 <?php endforeach ?>
