@@ -34,6 +34,8 @@ class BasicClass
      * @param float $two Second argument
      *
      * @return float
+     *
+     * @throws InvalidArgumentException Thrown when a param is invalid
      */
     public function addValues($one, $two)
     {

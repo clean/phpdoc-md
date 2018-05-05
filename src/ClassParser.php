@@ -56,9 +56,10 @@ class ClassParser
         $data = [
             'shortDescription' => $docblock->getShortDescription(),
             'longDescription' => $docblock->getLongDescription(),
-            'argumentsList' => $this->retriveParams($docblock->getTagsByName('param')),
-            'argumentsDescription' => $this->retriveParamsDescription($docblock->getTagsByName('param')),
-            'returnValue' => $this->retriveReturnValue($docblock->getTagsByName('return')),
+            'argumentsList' => $this->retrieveParams($docblock->getTagsByName('param')),
+            'argumentsDescription' => $this->retrieveParamsDescription($docblock->getTagsByName('param')),
+            'returnValue' => $this->retrieveTagData($docblock->getTagsByName('return')),
+            'throwsExceptions' => $this->retrieveTagData($docblock->getTagsByName('throws')),
             'visibility' =>  join(
                 '',
                 [
@@ -84,7 +85,7 @@ class ClassParser
         return $methods;
     }
 
-    private function retriveReturnValue(array $params)
+    private function retrieveTagData(array $params)
     {
         $data = [];
         foreach ($params as $param) {
@@ -96,7 +97,7 @@ class ClassParser
         return $data;
     }
 
-    private function retriveParams(array $params)
+    private function retrieveParams(array $params)
     {
         $data = [];
         foreach ($params as $param) {
@@ -105,7 +106,7 @@ class ClassParser
         return $data;
     }
 
-    private function retriveParamsDescription(array $params)
+    private function retrieveParamsDescription(array $params)
     {
         $data = [];
         foreach ($params as $param) {
