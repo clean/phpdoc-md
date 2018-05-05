@@ -36,6 +36,7 @@ class BasicClass
      * @return float
      *
      * @throws InvalidArgumentException Thrown when a param is invalid
+     * @throws RuntimeException Thrown when something happens at runtime
      */
     public function addValues($one, $two)
     {

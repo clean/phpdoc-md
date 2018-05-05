@@ -82,12 +82,13 @@
 **Throws Exceptions**
 
 <?php foreach ($info->throwsExceptions as $param) : ?>
+
 `<?= join('|', $param->type) ?>`
 <?php if ($param->desc) : ?>
 > <?= str_replace("\n", "  \n", $param->desc) ?>
 <?php endif ?>
-<?php endforeach ?>
 
+<?php endforeach ?>
 <?php endif ?>
 
 <?php endforeach ?>
