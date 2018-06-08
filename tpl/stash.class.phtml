@@ -1,3 +1,9 @@
+<?php
+function normalize($text)
+{
+    return preg_replace('/^_/', '\_', $text);
+}
+?>
 # <?= $this->className ?>  
 
 <?= $this->classDescription->short ?>
@@ -24,7 +30,7 @@
 | Name | Description |
 | ---- | ----------- |
 <?php foreach ($this->methods as $name => $info) : ?>
-| <a href="#<?= $this->classShortName ?>-<?= $name ?>"><?= preg_replace('/^_/', '\_', $name) ?></a> | <?= preg_replace('/^_/', '\_', $info->shortDescription) ?> |
+| <a href="#<?= $this->classShortName ?>-<?= $name ?>"><?= normalize($name) ?></a> | <?= normalize($info->shortDescription) ?> |
 <?php endforeach ?>
 
 <?php if ($this->inheritedMethods): ?>
@@ -33,7 +39,11 @@
 | Name | Description |
 |------|-------------|
 <?php foreach ($this->inheritedMethods as $name => $info) : ?>
-| <?= preg_replace('/^_/', '\_', $name) ?> | <?= preg_replace('/^_/', '\_', $info->shortDescription) ?> |
+<?php if (isset($info->doclink)): ?>
+| [<?= normalize($name) ?>](<?= $info->doclink ?>) | <?= normalize($info->shortDescription) ?: '-' ?> |
+<?php else: ?>
+| <?= normalize($name) ?> | <?= normalize($info->shortDescription) ?: '-' ?> |
+<?php endif ?>
 <?php endforeach ?>
 <?php endif ?>
 
@@ -89,5 +99,7 @@
 
 <?php endforeach ?>
 <?php endif ?>
+
+<hr />
 
 <?php endforeach ?>

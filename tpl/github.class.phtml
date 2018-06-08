@@ -34,7 +34,11 @@
 | Name | Description |
 |------|-------------|
 <?php foreach ($this->inheritedMethods as $name => $info) : ?>
+<?php if (isset($info->doclink)): ?>
+| [<?= $name ?>](<?= $info->doclink ?>) | <?= $info->shortDescription ?: '-' ?> |
+<?php else: ?>
 |<?= $name ?>|<?= $info->shortDescription ?: '-' ?>|
+<?php endif ?>
 <?php endforeach ?>
 <?php endif ?>
 
