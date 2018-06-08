@@ -34,5 +34,8 @@ Constructs an object
 
 **Return Values**
 
+`void`
 
+
+<hr />
 

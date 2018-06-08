@@ -45,6 +45,8 @@ Constructs an object
 
 
 
+<hr />
+
 
 ### BasicClass::addValues  
 
@@ -81,6 +83,8 @@ Adds two arguments
 `\RuntimeException`
 > Thrown when something happens at runtime
 
+<hr />
+
 
 ### BasicClass::one  
 
@@ -105,4 +109,6 @@ written in more then one line
 
 
 
+
+<hr />
 
