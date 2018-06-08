@@ -10,10 +10,13 @@ class ClassParser
      * @var ReflectionClass
      */
     private $reflection;
+    private $phpAtlas;
 
     public function __construct(ReflectionClass $class)
     {
         $this->reflection = $class;
+        $this->phpatlas = require(__DIR__.'/phpatlas.php');
+
     }
 
     public function getClassDescription()
@@ -53,22 +56,32 @@ class ClassParser
     private function getMethodDetails($method)
     {
         $docblock = new DocBlock($method);
-        $data = [
-            'shortDescription' => $docblock->getShortDescription(),
-            'longDescription' => $docblock->getLongDescription(),
-            'argumentsList' => $this->retrieveParams($docblock->getTagsByName('param')),
-            'argumentsDescription' => $this->retrieveParamsDescription($docblock->getTagsByName('param')),
-            'returnValue' => $this->retrieveTagData($docblock->getTagsByName('return')),
-            'throwsExceptions' => $this->retrieveTagData($docblock->getTagsByName('throws')),
-            'visibility' =>  join(
-                '',
-                [
-                    $method->isFinal() ? 'final ' : '',
-                    'public',
-                    $method->isStatic() ? ' static' : '',
-                ]
-            ),
-        ];
+
+        if ($docblock->getShortDescription()) {
+            $data = [
+                'shortDescription' => $docblock->getShortDescription(),
+                'longDescription' => $docblock->getLongDescription(),
+                'argumentsList' => $this->retrieveParams($docblock->getTagsByName('param')),
+                'argumentsDescription' => $this->retrieveParamsDescription($docblock->getTagsByName('param')),
+                'returnValue' => $this->retrieveTagData($docblock->getTagsByName('return')),
+                'throwsExceptions' => $this->retrieveTagData($docblock->getTagsByName('throws')),
+                'visibility' =>  join(
+                    '',
+                    [
+                        $method->isFinal() ? 'final ' : '',
+                        'public',
+                        $method->isStatic() ? ' static' : '',
+                    ]
+                ),
+            ];
+        } else {
+            $data = [];
+            $key = sprintf("%s::%s", $method->class, $method->name);
+            if (array_key_exists($key, $this->phpatlas)) {
+                $data['shortDescription'] = $this->phpatlas[$key];
+                $data['doclink'] = $this->getPHPDocLink($method);
+            }
+        }
         return (object)$data;
     }
 
@@ -117,5 +130,9 @@ class ClassParser
             ];
         }
         return $data;
+    }
+
+    private function getPHPDocLink($method) {
+        return strtolower(sprintf('https://secure.php.net/manual/en/%s.%s.php', $method->class, $method->name));
     }
 }
