@@ -72,6 +72,15 @@ Adds two arguments
 
 
 
+**Throws Exceptions**
+
+
+`\InvalidArgumentException`
+> Thrown when a param is invalid
+
+`\RuntimeException`
+> Thrown when something happens at runtime
+
 
 ### BasicClass::one  
 
