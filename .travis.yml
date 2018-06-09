@@ -18,6 +18,7 @@ before_script:
 
 script:
   - ./vendor/bin/phpunit
+  - ./bin/phpdoc-md
 
 after_script:
   - ./vendor/bin/test-reporter
