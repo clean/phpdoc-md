@@ -9,7 +9,7 @@
         "clean/view": "0.1.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "4.2.*",
+        "phpunit/phpunit": "<6",
         "romannowicki/mpr": "dev-master",
         "codeclimate/php-test-reporter": "dev-master"
     },
