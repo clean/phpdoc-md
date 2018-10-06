@@ -64,10 +64,10 @@ and to provide some background information or textual references.
 
 * `(string) $firstArgument`
 : With a *description* of this argument, these may also  
-   span multiple lines.  
+span multiple lines.  
 * `(string) $secondArgument`
 : With a *description* of this argument, these may also  
-   span multiple lines.  
+span multiple lines.  
 
 **Return Values**
 

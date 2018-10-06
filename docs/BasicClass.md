@@ -105,7 +105,7 @@ written in more then one line
 
 **Return Values**
 
-`integer`
+`int`
 
 
 
