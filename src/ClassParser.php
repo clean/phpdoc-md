@@ -1,6 +1,5 @@
 <?php namespace Clean\PhpDocMd;
 
-use phpDocumentor\Reflection\DocBlock;
 use phpDocumentor\Reflection\DocBlockFactory;
 use ReflectionClass;
 use ReflectionMethod;
