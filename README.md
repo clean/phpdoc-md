@@ -29,7 +29,7 @@ return (object)[
     'destDirectory' => 'docs',
     'format' => 'github',
     'classes' => [
-        '\Clean\PhpDocMd\Example\Basic'
+        '\Clean\PhpDocMd\Example\Basic',
         '\Clean\PhpDocMd\Example\Deep\Foo',
         '\Clean\PhpDocMd\Example\ExtendClass',
         '\Clean\PhpDocMd\Example\ExtendExtendClass',
