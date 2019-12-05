@@ -2,84 +2,76 @@
 <?php namespace Clean\PhpDocMd;
 
 use ReflectionClass;
+const CONFIG_FILENAME = '.phpdoc-md';
 
 require 'vendor/autoload.php';
-$config = require '.phpdoc-md';
 
-function getDestinationDirectory(ReflectionClass $reflection, $rootNamespace, $rootDir)
-{
-    return namespaceToPath(
-        rtrim(
-            sprintf(
-                '%s/%s',
-                $rootDir,
-                removeRootNamespace($reflection->getNamespaceName(), $rootNamespace)
-            ),
-            '/'
-        )
-    );
+$verbose = (in_array('-v', $argv)) ? true : false;
+
+if (in_array('-h', $argv)) {
+    echo <<<INFOBLOCK
+Usage: phpdoc-md [options]
+
+Options:
+ -h    Display this help message
+ -v    Verbose output
+INFOBLOCK;
+    exit;
 }
 
-function namespaceToPath($namespace)
-{
-    return str_replace(
-        '\\',
-        DIRECTORY_SEPARATOR,
-        $namespace
-    );
+// Step 1. check if config file exists
+if (file_exists(CONFIG_FILENAME)) {
+    $config = require CONFIG_FILENAME;
+} else {
+    error('Unable to load .phpdoc-md configuration file');
 }
 
-function removeRootNamespace($namespace, $root)
-{
-    $re = preg_replace(
-        sprintf("/^%s/", addslashes($root)),
-        '',
-        $namespace
-    );
-    return ltrim($re, '\\');
-}
 
-function error($message, $exception = null) {
-    echo sprintf("ERROR: '%s'", trim($message));
-    exit(1);
-}
-
+// Step 2. Create README parser for configured markdown output format
 switch ($config->format) {
-    default:
+    case 'github':
         $readme = new Markdown\GitHub\Readme($config->rootNamespace);
+        break;
+    case 'stash':
+    case 'bitbucket':
+        $readme = new Markdown\Stash\Readme($config->rootNamespace);
+        break;
+    default:
+        error(sprintf("Unknow markdown format '%s'. Only 'github' or 'bitbucket' allowed. Check your .phpdoc-md config file", $config->format));
 }
 
-foreach ($config->classes as $class) {
+
+// Step 3. Iterate thru 'classes' defined inside config file to generate documentation
+foreach ($config->classes as $className) {
     try {
-        $reflection = new ReflectionClass($class);
-    } catch(\ReflectionException $e) {
-        error('Config error: ' . $e->getMessage(), $e);
-    }
-    $destDir = getDestinationDirectory($reflection, $config->rootNamespace, $config->destDirectory);
-    $destFile = sprintf('%s.md', $reflection->getShortName());
-    switch ($config->format) {
-        case 'stash':
-            $markDown = new Markdown\Stash\ClassInfo($reflection);
-            break;
-        case 'github':
-            $markDown = new Markdown\GitHub\ClassInfo($reflection);
-            break;
-        default:
-            throw new \RuntimeException('Not supported markdown format given: ' . $config->format);
+        $reflection = new ReflectionClass($className);
+        $parser = getClassInfoParser($config->format, $reflection);
 
+        $destDir = getDestinationDirectory($reflection, $config->rootNamespace, $config->destDirectory);
+        $destFile = sprintf('%s.md', $reflection->getShortName());
+
+        info(sprintf('Generating %s/%s from %s', $destDir, $destFile, $className), $verbose);
+
+        file_exists($destDir) ?: mkdir($destDir, 0777, true);
+        file_put_contents($destDir . DIRECTORY_SEPARATOR . $destFile, $parser);
+
+        $readme->addLink(
+            removeRootNamespace($reflection->getName(), $config->rootNamespace),
+            namespaceToPath(
+                removeRootNamespace(
+                    $reflection->getName(),
+                    $config->rootNamespace
+                )
+            ) . '.md'
+        );
+    } catch (\RuntimeException $e) {
+        error($e->message);
     }
 
-    file_exists($destDir) ?: mkdir($destDir, 0777, true);
-    file_put_contents($destDir . DIRECTORY_SEPARATOR . $destFile, $markDown);
-    $readme->addLink(
-        removeRootNamespace($reflection->getName(), $config->rootNamespace),
-        namespaceToPath(
-            removeRootNamespace(
-                $reflection->getName(),
-                $config->rootNamespace
-            )
-        ) . '.md'
-    );
 }
 
+// Step 4. generate main README.md with all links to generated docs files
+info(sprintf('Generating %s/README.md - documentation entry point', $destDir), $verbose);
 file_put_contents($config->destDirectory . '/README.md', $readme);
+info('All done', $verbose);
+

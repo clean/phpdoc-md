@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "592169a5459d7b758473253c97ccb853",
+    "content-hash": "724e4218f10a58c10fc592b6098f4a2a",
     "packages": [
         {
             "name": "clean/view",
@@ -294,6 +294,38 @@
         }
     ],
     "packages-dev": [
+        {
+            "name": "clean/mpr",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/clean/mpr.git",
+                "reference": "ed184d55aed2d153b70193a94e9086c2c34ad5cf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/clean/mpr/zipball/ed184d55aed2d153b70193a94e9086c2c34ad5cf",
+                "reference": "ed184d55aed2d153b70193a94e9086c2c34ad5cf",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "mpr.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Prints human-readable information about a variable",
+            "keywords": [
+                "debug",
+                "print_r",
+                "trace"
+            ],
+            "time": "2017-04-25T16:56:53+00:00"
+        },
         {
             "name": "codeclimate/php-test-reporter",
             "version": "dev-master",
@@ -1276,39 +1308,6 @@
                 "psr-3"
             ],
             "time": "2019-11-01T11:05:21+00:00"
-        },
-        {
-            "name": "romannowicki/mpr",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/clean/mpr.git",
-                "reference": "ed184d55aed2d153b70193a94e9086c2c34ad5cf"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/clean/mpr/zipball/ed184d55aed2d153b70193a94e9086c2c34ad5cf",
-                "reference": "ed184d55aed2d153b70193a94e9086c2c34ad5cf",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "mpr.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Prints human-readable information about a variable",
-            "keywords": [
-                "debug",
-                "print_r",
-                "trace"
-            ],
-            "abandoned": "clean/mpr",
-            "time": "2017-04-25T16:56:53+00:00"
         },
         {
             "name": "satooshi/php-coveralls",
@@ -2491,7 +2490,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "romannowicki/mpr": 20,
+        "clean/mpr": 20,
         "codeclimate/php-test-reporter": 20
     },
     "prefer-stable": false,

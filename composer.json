@@ -10,13 +10,16 @@
     },
     "require-dev": {
         "phpunit/phpunit": "<6",
-        "romannowicki/mpr": "dev-master",
+        "clean/mpr": "dev-master",
         "codeclimate/php-test-reporter": "dev-master"
     },
     "autoload": {
         "psr-4": {
             "Clean\\PhpDocMd\\": "src/"
-        }
+        },
+        "files": [
+          "src/snippets.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
