@@ -4,11 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fb831af6d86dc31394d0d9909eeb0096",
+    "content-hash": "c39575222f2803a21e1f346a97c60103",
     "packages": [
         {
             "name": "clean/phpatlas",
-            "version": "dev-master",
+            "version": "0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/clean/phpatlas.git",
@@ -2517,13 +2517,12 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": {
-        "clean/phpatlas": 20,
         "clean/mpr": 20,
         "codeclimate/php-test-reporter": 20
     },
-    "prefer-stable": false,
+    "prefer-stable": true,
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": []
