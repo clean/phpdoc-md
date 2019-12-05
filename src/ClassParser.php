@@ -1,6 +1,6 @@
 <?php namespace Clean\PhpDocMd;
 
-use phpDocumentor\Reflection\DocBlock;
+use phpDocumentor\Reflection\DocBlockFactory;
 use ReflectionClass;
 use ReflectionMethod;
 
@@ -10,21 +10,23 @@ class ClassParser
      * @var ReflectionClass
      */
     private $reflection;
+    private $docBlockFactory;
     private $phpAtlas;
 
     public function __construct(ReflectionClass $class)
     {
         $this->reflection = $class;
+        $this->docBlockFactory = DocBlockFactory::createInstance();
         $this->phpatlas = require(__DIR__.'/phpatlas.php');
 
     }
 
     public function getClassDescription()
     {
-        $docblock = new DocBlock($this->reflection);
+        $docblock = $this->docBlockFactory->create($this->reflection->getDocComment() ?: '/** */');
         return (object)[
-            'short' => (string)$docblock->getShortDescription(),
-            'long' => (string)$docblock->getLongDescription(),
+            'short' => (string)$docblock->getSummary(),
+            'long' => (string)$docblock->getDescription(),
         ];
     }
 
@@ -55,12 +57,12 @@ class ClassParser
 
     private function getMethodDetails($method)
     {
-        $docblock = new DocBlock($method);
+        $docblock = $this->docBlockFactory->create($method->getDocComment() ?: '/** */');
 
-        if ($docblock->getShortDescription()) {
+        if ($docblock->getSummary()) {
             $data = [
-                'shortDescription' => $docblock->getShortDescription(),
-                'longDescription' => $docblock->getLongDescription(),
+                'shortDescription' => $docblock->getSummary(),
+                'longDescription' => $docblock->getDescription(),
                 'argumentsList' => $this->retrieveParams($docblock->getTagsByName('param')),
                 'argumentsDescription' => $this->retrieveParamsDescription($docblock->getTagsByName('param')),
                 'returnValue' => $this->retrieveTagData($docblock->getTagsByName('return')),
@@ -104,7 +106,7 @@ class ClassParser
         foreach ($params as $param) {
             $data[] = (object)[
                 'desc' => $param->getDescription(),
-                'type' => $param->getTypes(),
+                'type' => $param->getType(),
             ];
         }
         return $data;
@@ -114,7 +116,7 @@ class ClassParser
     {
         $data = [];
         foreach ($params as $param) {
-            $data[] = sprintf("%s %s", join('|', $param->getTypes()), $param->getVariableName());
+            $data[] = sprintf("%s $%s", $param->getType(), $param->getVariableName());
         }
         return $data;
     }
@@ -124,9 +126,9 @@ class ClassParser
         $data = [];
         foreach ($params as $param) {
             $data[] = (object)[
-                'name' => $param->getVariableName(),
+                'name' => '$' . $param->getVariableName(),
                 'desc' => $param->getDescription(),
-                'type' => $param->getTypes(),
+                'type' => $param->getType(),
             ];
         }
         return $data;

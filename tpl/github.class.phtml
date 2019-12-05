@@ -63,8 +63,8 @@
 `This function has no parameters.`
 <?php else : ?>
 <?php foreach ($info->argumentsDescription as $param) : ?>
-* `(<?= join('|', $param->type) ?>) <?= $param->name ?>`
-<?php if ($param->desc) : ?>
+* `(<?= $param->type ?>) <?= $param->name ?>`
+<?php if (! empty(trim($param->desc))) : ?>
 : <?= str_replace("\n", "  \n", $param->desc) ?>  
 <?php endif ?>
 <?php endforeach ?>
@@ -76,9 +76,9 @@
 `void`
 <?php else : ?>
 <?php foreach ($info->returnValue as $param) : ?>
-`<?= join('|', $param->type) ?>`
+`<?= $param->type ?>`
 
-<?php if ($param->desc) : ?>
+<?php if (! empty(trim($param->desc))) : ?>
 > <?= str_replace("\n", "  \n", $param->desc) ?>
 <?php endif ?>
 
@@ -91,8 +91,8 @@
 
 <?php foreach ($info->throwsExceptions as $param) : ?>
 
-`<?= join('|', $param->type) ?>`
-<?php if ($param->desc) : ?>
+`<?= $param->type ?>`
+<?php if (! empty(trim($param->desc))) : ?>
 > <?= str_replace("\n", "  \n", $param->desc) ?>
 <?php endif ?>
 
