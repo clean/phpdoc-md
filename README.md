@@ -8,7 +8,7 @@
 [![Total Downloads](https://poser.pugx.org/clean/phpdoc-md/downloads)](https://packagist.org/packages/clean/phpdoc-md)
 [![License](https://poser.pugx.org/clean/phpdoc-md/license)](https://packagist.org/packages/clean/phpdoc-md)
 
-![Image of example documentation](example.png)
+![Image of example documentation](./example.jpg)
 
 phpdoc-md is a tool to generate nicely looking documentation from PHPDOC comments.
 
