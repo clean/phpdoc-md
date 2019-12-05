@@ -4,8 +4,37 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "724e4218f10a58c10fc592b6098f4a2a",
+    "content-hash": "fb831af6d86dc31394d0d9909eeb0096",
     "packages": [
+        {
+            "name": "clean/phpatlas",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/clean/phpatlas.git",
+                "reference": "d42bf23d0478c59accb03d469ed8fb7069383bfc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/clean/phpatlas/zipball/d42bf23d0478c59accb03d469ed8fb7069383bfc",
+                "reference": "d42bf23d0478c59accb03d469ed8fb7069383bfc",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "5.7.27"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Clean\\PhpAtlas\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "time": "2019-12-05T22:20:15+00:00"
+        },
         {
             "name": "clean/view",
             "version": "0.1.0",
@@ -2490,6 +2519,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "clean/phpatlas": 20,
         "clean/mpr": 20,
         "codeclimate/php-test-reporter": 20
     },

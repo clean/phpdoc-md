@@ -11,14 +11,11 @@ class ClassParser
      */
     private $reflection;
     private $docBlockFactory;
-    private $phpAtlas;
 
     public function __construct(ReflectionClass $class)
     {
         $this->reflection = $class;
         $this->docBlockFactory = DocBlockFactory::createInstance();
-        $this->phpatlas = require(__DIR__.'/phpatlas.php');
-
     }
 
     public function getClassDescription()
@@ -78,11 +75,10 @@ class ClassParser
             ];
         } else {
             $data = [];
-            $key = sprintf("%s::%s", $method->class, $method->name);
-            if (array_key_exists($key, $this->phpatlas)) {
-                $data['shortDescription'] = $this->phpatlas[$key];
-                $data['doclink'] = $this->getPHPDocLink($method);
-            }
+            $className = sprintf("%s::%s", $method->class, $method->name);
+            $atlasdoc = new \Clean\PhpAtlas\ClassMethod($className);
+            $data['shortDescription'] = $atlasdoc->getMethodShortDescription();
+            $data['doclink'] = $atlasdoc->getMethodPHPDocLink();
         }
         return (object)$data;
     }
