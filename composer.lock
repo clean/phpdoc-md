@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c39575222f2803a21e1f346a97c60103",
+    "content-hash": "14495fa5f9d919a2ee69ad2798682b28",
     "packages": [
         {
             "name": "clean/phpatlas",

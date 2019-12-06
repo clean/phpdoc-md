@@ -7,7 +7,7 @@
     "minimum-stability": "dev",
     "prefer-stable" : true,
     "require": {
-        "phpdocumentor/reflection-docblock": "^3.0.2|^4.0",
+        "phpdocumentor/reflection-docblock": "^3|^4",
         "clean/view": "0.1.0",
         "clean/phpatlas": "0.1.0"
     },

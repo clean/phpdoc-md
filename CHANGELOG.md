@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.16.0
+- fix PHP Notice during view render method, when not all class poperties are set
+
+## 0.15.0
+- code refacture required to work with php7 and new DocBlock Api
+
+## 0.14.0
+
+- update project dependecies
+
+## 0.13.0
+
+- recognise native php methods in class parser and include them in class documentation
+
+## 0.12.0
+
+- Add "void" if no return values available
+- fix for formatting of multiple @throws tags
+
 ## 0.11.0
 
 - feature: add links to methods for bitbucket server markdown
