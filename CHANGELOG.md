@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.19.0
+- Update PHP dependencies
+
 ## 0.18.0
 - Use composer update in travis build process to cover php5.6 requirements
 
