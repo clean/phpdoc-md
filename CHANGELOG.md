@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.18.0
+- Use composer update in travis build process to cover php5.6 requirements
+
+## 0.17.0
+- Update PHP dependencies
+
 ## 0.16.0
 - fix PHP Notice during view render method, when not all class poperties are set
 

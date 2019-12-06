@@ -8,7 +8,7 @@ addons:
     repo_token: c9e47022796dcebc88c36be1f2497e167b12d93f3601619150ceaec39faf520f
 
 install:
-  - composer install
+  - composer update
 
 before_script:
   - mkdir -p build/logs
