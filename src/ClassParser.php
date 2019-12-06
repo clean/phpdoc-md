@@ -56,25 +56,32 @@ class ClassParser
     {
         $docblock = $this->docBlockFactory->create($method->getDocComment() ?: '/** */');
 
+        $data = [
+            'shortDescription' => null,
+            'longDescription' => null,
+            'argumentsList' => [],
+            'argumentsDescription' => null,
+            'returnValue' => null,
+            'throwsExceptions' => null,
+            'visibility' => null,
+        ];
+
         if ($docblock->getSummary()) {
-            $data = [
-                'shortDescription' => $docblock->getSummary(),
-                'longDescription' => $docblock->getDescription(),
-                'argumentsList' => $this->retrieveParams($docblock->getTagsByName('param')),
-                'argumentsDescription' => $this->retrieveParamsDescription($docblock->getTagsByName('param')),
-                'returnValue' => $this->retrieveTagData($docblock->getTagsByName('return')),
-                'throwsExceptions' => $this->retrieveTagData($docblock->getTagsByName('throws')),
-                'visibility' =>  join(
+            $data['shortDescription'] = $docblock->getSummary();
+            $data['longDescription'] = $docblock->getDescription();
+            $data['argumentsList'] = $this->retrieveParams($docblock->getTagsByName('param'));
+            $data['argumentsDescription'] = $this->retrieveParamsDescription($docblock->getTagsByName('param'));
+            $data['returnValue'] = $this->retrieveTagData($docblock->getTagsByName('return'));
+            $data['throwsExceptions'] = $this->retrieveTagData($docblock->getTagsByName('throws'));
+            $data['visibility'] =  join(
                     '',
                     [
                         $method->isFinal() ? 'final ' : '',
                         'public',
                         $method->isStatic() ? ' static' : '',
                     ]
-                ),
-            ];
+                );
         } else {
-            $data = [];
             $className = sprintf("%s::%s", $method->class, $method->name);
             $atlasdoc = new \Clean\PhpAtlas\ClassMethod($className);
             $data['shortDescription'] = $atlasdoc->getMethodShortDescription();
