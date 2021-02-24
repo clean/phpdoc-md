@@ -71,7 +71,7 @@ foreach ($config->classes as $className) {
 }
 
 // Step 4. generate main README.md with all links to generated docs files
-info(sprintf('Generating %s/README.md - documentation entry point', $destDir), $verbose);
+info(sprintf('Generating %s/README.md - documentation entry point', $config->destDirectory), $verbose);
 file_put_contents($config->destDirectory . '/README.md', $readme);
 info('All done', $verbose);
 
