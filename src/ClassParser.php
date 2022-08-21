@@ -1,6 +1,7 @@
 <?php namespace Clean\PhpDocMd;
 
 use phpDocumentor\Reflection\DocBlockFactory;
+use phpDocumentor\Reflection\DocBlock\Tags\InvalidTag;
 use ReflectionClass;
 use ReflectionMethod;
 
@@ -119,6 +120,9 @@ class ClassParser
     {
         $data = [];
         foreach ($params as $param) {
+            if ($param instanceof InvalidTag) {
+                continue;
+            }
             $data[] = sprintf("%s $%s", $param->getType(), $param->getVariableName());
         }
         return $data;
@@ -128,6 +132,9 @@ class ClassParser
     {
         $data = [];
         foreach ($params as $param) {
+            if ($param instanceof InvalidTag) {
+                continue;
+            }
             $data[] = (object)[
                 'name' => '$' . $param->getVariableName(),
                 'desc' => $param->getDescription(),

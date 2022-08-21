@@ -24,7 +24,7 @@ function getClassInfoParser($format, ReflectionClass $reflection) {
             $parser = new Markdown\GitHub\ClassInfo($reflection);
             break;
         default:
-            throw new \RuntimeException(sprintf("Unknow markdown format '%s'. Only 'github' or 'bitbucket' allowed. Check your .phpdoc-md config file", $config->format));
+            throw new \RuntimeException(sprintf("Unknown markdown format '%s'. Only 'github' or 'bitbucket' allowed. Check your .phpdoc-md config file", $config->format));
     }
     return $parser;
 
