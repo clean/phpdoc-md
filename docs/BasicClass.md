@@ -14,7 +14,7 @@ various PHPDoc tags are used.
 
 | Name | Description |
 |------|-------------|
-|[__construct](#basicclass__construct)|Constructs an object|
+|[__construct](#basicclass__construct)|Constructs an object of some specific type with certain unspoken defaults.|
 |[addValues](#basicclassaddvalues)|Adds two arguments|
 |[one](#basicclassone)|Returns one|
 
@@ -29,14 +29,15 @@ various PHPDoc tags are used.
 public __construct (array $options)
 ```
 
-Constructs an object 
+Constructs an object of some specific type with certain unspoken defaults. 
 
  
 
 **Parameters**
 
 * `(array) $options`
-: options  
+: the user's desired settings for the object being  
+created.  
 
 **Return Values**
 
