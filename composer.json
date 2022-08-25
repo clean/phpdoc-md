@@ -13,7 +13,7 @@
         "clean/phpatlas": "^0.2"
     },
     "require-dev": {
-        "phpunit/phpunit": ">6",
+        "phpunit/phpunit": ">5",
         "clean/mpr": "^1"
     },
     "autoload": {
