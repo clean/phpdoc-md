@@ -29,7 +29,12 @@ abstract class ClassInfo extends Phtml
     public function render()
     {
         $parser = new ClassParser($this->reflectionClass);
-        $methods = $parser->getMethodsDetails();
+        $methods = [];
+        foreach ($parser->getMethodsDetails() as $methodName => $methodDetails) {
+            $methodDetails->shortDescription = $this
+                ->removeHardLineBreaks($methodDetails->shortDescription);
+            $methods[$methodName] = $methodDetails;
+        }
         ksort($methods);
 
         $this->setData(
@@ -44,5 +49,14 @@ abstract class ClassInfo extends Phtml
             ]
         );
         return parent::render();
+    }
+
+    /** Strip hard line wraps from string */
+    private function removeHardLineBreaks($text) {
+        return preg_replace(
+            ['(\n)', '( +)'],
+            [' ', ' '],
+            $text
+        );
     }
 }

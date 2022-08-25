@@ -17,9 +17,11 @@ class BasicClass
     public $config;
 
     /**
-     * Constructs an object
+     * Constructs an object of some specific type with certain unspoken
+     * defaults.
      *
-     * @param array $options options
+     * @param array $options  the user's desired settings for the object being
+     *      created.
      *
      * @return void
      */
