@@ -12,9 +12,8 @@
         "clean/phpatlas": "0.2.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "<6",
-        "clean/mpr": "dev-master",
-        "codeclimate/php-test-reporter": "dev-master"
+        "phpunit/phpunit": ">6",
+        "clean/mpr": "^1"
     },
     "autoload": {
         "psr-4": {
