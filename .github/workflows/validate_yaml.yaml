@@ -5,6 +5,9 @@ name: YAML Validation
 on:
   pull_request:
   push:
+    branches:
+      - main
+      - master
 
 jobs:
   validate-yaml:
